@@ -19,13 +19,13 @@ Now your Selenium server and rvm are installed. Switch to project folder for run
 
 e. To run 
 
-1) Only one Scenario: cucumber --tags @Create_offer BROWSER=chrome
+1) Only one Scenario: cucumber --tags @Login_page BROWSER=chrome
 2) All tests on local: cucumber WHERE=local
 
 3) On remote:
 
-    a) docker build --rm -t e2e-offer-test:latest .
-    
+    a) docker build --rm -t login_watir:latest .
+
     b) docker-compose up
 
 Create seperate branch and start adding scenarios.
