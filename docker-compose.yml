@@ -1,0 +1,43 @@
+version: "3"
+services:
+  google_doc:
+    image: login_watir:latest
+    container_name: google_doc
+    command: cucumber
+    environment:
+      - WHERE=remote
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - SELENIUM_REMOTE_HOST=localhost
+    network_mode: "host"
+    depends_on:
+      - selenium-hub
+      - chrome
+      - firefox
+  selenium-hub:
+    image: selenium/hub
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+
+  chrome:
+    image: selenium/node-chrome
+    container_name: chrome
+    volumes:
+      - ./test_file:/test_file
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  firefox:
+    image: selenium/node-firefox
+    container_name: firefox
+    volumes:
+      - ./test_file:/test_file
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
