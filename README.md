@@ -32,16 +32,4 @@ Create seperate branch and start adding scenarios.
 
 Happy Scripting :)
 
-## Makefile
-
-```
-$ make help
-$ make docker.build
-$ make compose.run
-
-or simply ...
-
-$ make compose.build-and-run
-
-```
 
